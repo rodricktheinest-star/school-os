@@ -69,7 +69,6 @@
             height: 100px;
             border-radius: 50%;
             object-fit: cover;
-            object-position: top;
             border: 2px solid var(--neon-blue);
             box-shadow: 0 0 25px rgba(0, 243, 255, 0.4), inset 0 0 15px rgba(0, 243, 255, 0.4);
         }
@@ -257,7 +256,7 @@
 
         /* Chat UI for AI Core */
         .chat-box {
-            height: 220px;
+            height: 240px;
             overflow-y: auto;
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 14px;
@@ -269,11 +268,11 @@
         }
 
         .msg {
-            max-width: 85%;
+            max-width: 88%;
             padding: 10px 12px;
             border-radius: 12px;
             font-size: 12px;
-            line-height: 1.4;
+            line-height: 1.5;
         }
 
         .msg.ai {
@@ -306,8 +305,8 @@
     <!-- Header -->
     <div class="brand-header">
         <div class="avatar-wrapper">
-            <!-- Picha yako kama Logo ya MR. SYSTEMS -->
-            <img src="https://i.ibb.co/680327f/mr-systems-profile.jpg" alt="MR. SYSTEMS Administrator" class="avatar-glow">
+            <!-- Picha Mpya ya Logo (Cyberpunk Academic Logo) -->
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&auto=format&fit=crop" alt="MR. SYSTEMS Administrator" class="avatar-glow">
             <div class="status-badge"></div>
         </div>
         <div class="brand-title">MR. SYSTEMS</div>
@@ -417,7 +416,7 @@
             </div>
         </div>
         <div class="input-group">
-            <input type="text" id="aiInput" placeholder="Andika swali au mada hapa...">
+            <input type="text" id="aiInput" placeholder="Andika swali au mada hapa (mfano: Uchumi wa bluu ni nini?)...">
         </div>
         <button class="btn-action" style="background: linear-gradient(135deg, var(--neon-purple), #7209b7); color: white;" onclick="sendAIMessage()">
             <i class="fa-solid fa-paper-plane"></i> Uliza AI Assistant
@@ -477,7 +476,7 @@
         }
     }
 
-    // Interactive AI Neural Assistant Simulation
+    // Enhanced AI Knowledge Engine
     function sendAIMessage() {
         const input = document.getElementById('aiInput');
         const chatBox = document.getElementById('chatBox');
@@ -495,24 +494,33 @@
             chatBox.innerHTML += `<div class="msg ai" id="tempLoading"><i class="fa-solid fa-spinner fa-spin"></i> MR. SYSTEMS AI inachakata majibu...</div>`;
             chatBox.scrollTop = chatBox.scrollHeight;
 
-            // Generate AI Response
             setTimeout(() => {
                 const loader = document.getElementById('tempLoading');
                 if (loader) loader.remove();
 
-                chatBox.innerHTML += `
-                    <div class="msg ai">
-                        <b>Jibu la MR. SYSTEMS AI:</b><br>
-                        Kuhusu <i>"${text}"</i>: Hili ni eneo muhimu la kielimu. Unaweza kutumia Tab ya <b>Global Search</b> kupata vitabu vya kina au kutazama mwongozo rasmi wa TIE.
-                    </div>
-                `;
+                let responseText = "";
+                const q = text.toLowerCase();
+
+                // Dynamic Smart Responses
+                if (q.includes("uchumi wa bluu") || q.includes("blue economy")) {
+                    responseText = "<b>Uchumi wa Bluu (Blue Economy):</b> Ni matumizi endelevu ya rasilimali za bahari, maziwa, na mito kwa ajili ya ukuaji wa kiuchumi, uboreshaji wa maisha, na ajira huku mfumo wa ikolojia wa majini ukihifadhiwa. Unahusisha uvuvi, usafiri wa majini, utalii wa baharini, na nishati jadidifu.";
+                } else if (q.includes("lesson plan") || q.includes("andaa somo")) {
+                    responseText = "<b>Mwongozo wa Lesson Plan:</b> Utaratibu wa kuandaa somo unahusisha:<br>1. Main Competence & Specific Competence<br>2. Subject / Topic / Sub-topic<br>3. Teaching & Learning Materials<br>4. Stages (Introduction, New Knowledge, Reinforcement, Reflection, Conclusion).";
+                } else if (q.includes("physics") || q.includes("chemistry") || q.includes("biology") || q.includes("sayansi")) {
+                    responseText = "Kuhusu somo la Sayansi: Unaweza kutumia <b>Global Search</b> au kiungo cha <b>Nature Open Access</b> kupata nakala za majarida ya kisayansi na nadharia za hivi karibuni.";
+                } else {
+                    responseText = `<b>MR. SYSTEMS AI Neural Analysis:</b><br>Kuhusu <i>"${text}"</i>: Hii ni mada ya msingi sana. Ili kupata maelezo ya kina ya vitabu, tumia Tab ya <b>Global Search</b> au fungua Maktaba ya <b>TIE / Open Library</b>.`;
+                }
+
+                chatBox.innerHTML += `<div class="msg ai">${responseText}</div>`;
                 chatBox.scrollTop = chatBox.scrollHeight;
-            }, 1200);
-        }, 400);
+            }, 1000);
+        }, 300);
     }
 </script>
 
 </body>
 </html>
+
 
         
